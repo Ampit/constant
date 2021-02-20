@@ -15,6 +15,10 @@ a {
   box-sizing: border-box;
 }
 
+.list-group-item {
+  cursor: pointer;
+}
+
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
