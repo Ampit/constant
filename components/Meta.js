@@ -32,6 +32,10 @@ const Meta = ({ title, keywords, description }) => {
         crossOrigin="anonymous"
         defer
       ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+      ></link>
       <script src="../js/snackbar.js" defer></script>
       <title>{title}</title>
     </Head>

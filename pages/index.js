@@ -35,10 +35,9 @@ export default function Home() {
             newTask={newTask}
             addNewItem={addNewItem}
           />
-
-          <TaskList tasks={tasks} setTasks={setTasks} />
         </div>
       </div>
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </>
   );
 }
