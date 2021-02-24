@@ -10,7 +10,7 @@ export default function Page({ content, session }) {
   // If session exists, display content
   return (
     <>
-      <h1>Protected Page</h1>
+      <h3>Protected Page</h3>
       <p>
         <strong>{content}</strong>
       </p>

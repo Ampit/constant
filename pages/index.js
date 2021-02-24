@@ -1,56 +1,43 @@
 import { useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/client";
+import { useSession } from "next-auth/client";
 import AccessDenied from "../components/access-denied";
+import LoggedIn from "../components/LoggedIn";
 import AddTaskForm from "../components/AddTaskForm";
 import TaskList from "../components/TaskList";
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
-
   const [session, loading] = useSession();
 
   const addNewItem = (e) => {
     e.preventDefault();
-
-    // error check
     if (!newTask) {
+      // error check
       snackbar("Please Fill in a task");
       return;
     }
-
-    // Add new ItemList
-    const newTasks = [{ taskName: newTask, complete: false }, ...tasks];
+    const newTasks = [{ taskName: newTask, complete: false }, ...tasks]; // Add new ItemList
     setTasks(newTasks);
     snackbar(`${newTask} Added`);
-
-    // Clear the form field
-    setNewTask("");
+    setNewTask(""); // Clear the form field
   };
-
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== "undefined" && loading) return null;
-
   // If no session exists, display access denied message
   if (!session) {
     return <AccessDenied />;
   }
-
   return (
     <>
-      Signed in as {session.user.email} <br />
-      <button onClick={() => signOut()}>Sign out</button>
-      <div id="snackbar"></div>
-      <div className="row">
-        <div className="col-sm-6 mx-auto">
-          <AddTaskForm
-            setNewTask={setNewTask}
-            newTask={newTask}
-            addNewItem={addNewItem}
-          />
-        </div>
-      </div>
+      <LoggedIn session={session} />
+      <AddTaskForm
+        setNewTask={setNewTask}
+        newTask={newTask}
+        addNewItem={addNewItem}
+      />
       <TaskList tasks={tasks} setTasks={setTasks} />
+      <div id="snackbar"></div>
     </>
   );
 }

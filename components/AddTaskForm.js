@@ -1,6 +1,6 @@
 const AddTaskForm = ({ setNewTask, newTask, addNewItem }) => {
   return (
-    <form className="text-center my-3">
+    <form className="text-center my-3" acceptCharset="utf-8">
       <div className="form-group">
         <input
           type="text"

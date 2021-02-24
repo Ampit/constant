@@ -9,10 +9,12 @@ const Layout = ({ children }) => {
       <Meta />
       <Nav />
       <div className="container">
-        <main>
-          <Header />
-          {children}
-        </main>
+        <div className="row">
+          <div className="col-sm-6 mx-auto">
+            <Header />
+            {children}
+          </div>
+        </div>
       </div>
       <Footer />
     </>
