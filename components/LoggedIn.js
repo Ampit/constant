@@ -1,13 +1,11 @@
-import { signOut } from "next-auth/client";
+import { useSession } from "next-auth/client";
 
-export default function LoggedIn({ session }) {
+export default function LoggedIn() {
+  const [session] = useSession();
   return (
-    <p className="text-center">
-      Signed in as {session.user.email}
-      <br />
-      <button className="btn btn-danger" onClick={() => signOut()}>
-        Sign out
-      </button>
-    </p>
+    <>
+      <p className="text-center">Signed in as {session.user.email}</p>
+      <hr />
+    </>
   );
 }

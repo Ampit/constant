@@ -25,7 +25,7 @@ export default function Main() {
 
   return (
     <>
-      <LoggedIn session={session} />
+      <LoggedIn />
       <AddTaskForm
         setNewTask={setNewTask}
         newTask={newTask}

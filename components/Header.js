@@ -3,10 +3,11 @@ import headerStyles from "../styles/Header.module.css";
 const Header = () => {
   return (
     <>
-      <h1 className={headerStyles.title}>Constant</h1>
+      <h1 className={headerStyles.title}>{process.env.NEXT_PUBLIC_TITLE}</h1>
       <p className={headerStyles.description}>
-        Stay consistent with everyday tasks
+        {process.env.NEXT_PUBLIC_DESCRIPTION}
       </p>
+      <hr />
     </>
   );
 };

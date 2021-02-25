@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <Nav />
       <div className="container">
         <div className="row">
-          <div className="col-sm-6 mx-auto">
+          <div className="col-sm-6 mx-auto mb-5">
             <Header />
             {children}
           </div>
