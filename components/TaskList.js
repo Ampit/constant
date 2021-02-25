@@ -1,6 +1,10 @@
+import axios from "axios";
+import { useSession } from "next-auth/client";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const TaskList = ({ tasks, setTasks }) => {
+  const [session, loading] = useSession();
+
   const TaskStatusToggle = (tasks, task, setTasks) => {
     // get current complete state
     const currentCompleteState = tasks.filter(
@@ -26,7 +30,7 @@ const TaskList = ({ tasks, setTasks }) => {
     setTasks(updatedTasks);
   };
 
-  const deleteTask = (tasks, task, setTasks) => {
+  const deleteTask = async (tasks, task, setTasks) => {
     // update new state , deleting clicked task
     const updatedTasks = [
       ...tasks.filter((item) => item.taskName != task.taskName),
@@ -37,13 +41,18 @@ const TaskList = ({ tasks, setTasks }) => {
 
     // update tasks state to new state
     setTasks(updatedTasks);
+
+    await axios.post(`http://localhost:3000/api/tasks/${session.user.email}`, {
+      email: session.user.email,
+      tasks: updatedTasks,
+    });
   };
 
   return (
     <div className="my-5">
       <ListGroup id="listGroup">
         {tasks.map((task, i) => (
-          <div className="row taskgroup">
+          <div className="row taskgroup text-center">
             <ListGroup.Item
               onClick={() => TaskStatusToggle(tasks, task, setTasks)}
               key={i}
@@ -54,7 +63,7 @@ const TaskList = ({ tasks, setTasks }) => {
             </ListGroup.Item>
             <button
               type="button"
-              class="delete-btn btn btn-outline-danger"
+              className="delete-btn btn btn-outline-danger"
               onClick={() => deleteTask(tasks, task, setTasks)}
             >
               <svg
@@ -62,7 +71,7 @@ const TaskList = ({ tasks, setTasks }) => {
                 width="16"
                 height="16"
                 fill="currentColor"
-                class="bi bi-x-square-fill"
+                className="bi bi-x-square-fill"
                 viewBox="0 0 16 16"
               >
                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"></path>
