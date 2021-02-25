@@ -43,9 +43,9 @@ const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: "Constant",
-  keywords: "relentless everyday tasks",
-  description: "Be a better you tomorrow by completing your tasks everyday",
+  title: process.env.NEXT_PUBLIC_TITLE,
+  keywords: process.env.NEXT_PUBLIC_KEYWORDS,
+  description: process.env.NEXT_PUBLIC_DESCRIPTION,
 };
 
 export default Meta;
