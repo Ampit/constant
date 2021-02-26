@@ -6,10 +6,12 @@ import { getSession } from "next-auth/client";
 export default async (req, res) => {
   const session = await getSession({ req });
   // Protect Route
-  if (!session)
+  if (!session) {
     res
-      .status(400)
+      .status(200)
       .json({ success: false, data: "Please Sign in before using this api" });
+    return;
+  }
   // a User is signed in
   const {
     method,

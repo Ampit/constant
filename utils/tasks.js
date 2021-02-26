@@ -1,9 +1,12 @@
 /* eslint-disable no-undef */
 import axios from "axios";
 
-export const fetchTasks = async (session, setTasks) => {
+export const fetchTasks = async (session) => {
   // User Logged In ?
-  if (!session) return;
+  if (!session) {
+    console.log("No Session returning");
+    return;
+  }
   let config = {
     method: "get",
     url:
@@ -13,9 +16,9 @@ export const fetchTasks = async (session, setTasks) => {
   };
   try {
     const response = await axios(config);
-    response.data ? setTasks(response.data.data.tasks) : {};
+    return response.data.data.tasks;
   } catch (error) {
-    console.log(error);
+    console.log(`Axios Fetch Error: ${error}`);
   }
 };
 
