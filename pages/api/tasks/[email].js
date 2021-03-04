@@ -21,20 +21,22 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try {
-        const tasks = await Tasks.findOne({ email });
-        res.status(200).json({ success: true, data: tasks });
+        const response = await Tasks.findOne({ email });
+        res.status(200).json({ success: true, tasks: response.tasks });
       } catch (error) {
         console.log(error);
-        res.status(400).json({ success: false, data: "Didn't find any tasks" });
+        res
+          .status(400)
+          .json({ success: false, message: "Didn't find any tasks" });
       }
       break;
     case "POST":
       try {
         await Tasks.deleteOne({ email });
         const tasks = await Tasks.create(req.body);
-        res.status(201).json({ success: true, data: tasks });
+        res.status(201).json({ success: true, tasks });
       } catch (error) {
-        res.status(400).json({ success: false, data: "Couldn't Create" });
+        res.status(400).json({ success: false, message: "Couldn't Create" });
       }
       break;
     default:

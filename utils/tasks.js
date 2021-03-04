@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 import axios from "axios";
 
-export const fetchTasks = async (session) => {
+export const fetchTasks = async ({ queryKey }) => {
+  const [_key, session] = queryKey;
   // User Logged In ?
   if (!session) {
     console.log("No Session returning");
@@ -16,37 +17,10 @@ export const fetchTasks = async (session) => {
   };
   try {
     const response = await axios(config);
-    return response.data.data.tasks;
+    return response.data.tasks;
   } catch (error) {
     console.log(`Axios Fetch Error: ${error}`);
   }
-};
-
-export const addNewItemHandler = async (
-  e,
-  newTask,
-  tasks,
-  setTasks,
-  session,
-  setNewTask
-) => {
-  e.preventDefault();
-  if (!newTask) {
-    snackbar("Please Fill in a task");
-    return;
-  }
-  // User Logged IN ?
-  if (!session) return;
-  const newTasks = [
-    { taskName: newTask, complete: false, createdAt: Date() },
-    ...tasks,
-  ]; // Add new ItemList
-  //update local state
-  setTasks(newTasks);
-  snackbar(`${newTask} Added`);
-  //update db
-  updateDb(newTasks, session);
-  setNewTask(""); // Clear the form field
 };
 
 export const updateDb = async (tasks, session) => {

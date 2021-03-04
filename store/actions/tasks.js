@@ -1,22 +1,17 @@
 import * as actionTypes from "./actionTypes";
 
-export const fetchTasks = (session) => ({
-  type: actionTypes.FETCH_TASKS,
-  content: session,
-});
-export const AddTask = (newTask) => ({
-  type: actionTypes.ADD_TASK,
-  content: newTask,
-});
-export const DeleteTask = (task) => ({
-  type: actionTypes.DELETE_TASK,
-  content: task,
-});
-export const taskComplete = (task) => ({
-  type: actionTypes.TASK_COMPLETE,
-  content: task,
-});
-export const taskNotComplete = (task) => ({
-  type: actionTypes.TASK_NOT_COMPLETE,
-  content: task,
-});
+export const FetchTasks = (session) => (dispatch) => {
+  dispatch({
+    type: actionTypes.FETCH_TASKS,
+    payload: session,
+  });
+};
+export const AddTask = (newTask, session) => (dispatch) => {
+  dispatch({ type: actionTypes.ADD_TASK, payload: newTask, session });
+};
+export const DeleteTask = (task, session) => (dispatch) => {
+  dispatch({ type: actionTypes.DELETE_TASK, payload: task, session });
+};
+export const TaskStatusToggle = (task, session) => (dispatch) => {
+  dispatch({ type: actionTypes.TASK_STATUS_TOGGLE, payload: task, session });
+};
