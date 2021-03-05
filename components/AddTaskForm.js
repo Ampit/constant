@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/client";
 
-const AddTaskForm = ({ addNewItem, AddTaskAction }) => {
+const AddTaskForm = ({ AddTaskAction }) => {
   const [newTask, setNewTask] = useState("");
   const [session] = useSession();
 

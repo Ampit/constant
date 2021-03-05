@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { Provider } from "next-auth/client";
 import Layout from "../components/Layout";
 import { wrapper } from "../store"; //Our function for store initialization //HOC wich helps us use Redux with Next.js
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 
