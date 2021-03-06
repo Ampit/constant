@@ -12,11 +12,18 @@ const Nav = () => {
         </a>
       </li>
       {session && (
-        <li className="nav-item pull-right">
-          <button className="btn btn-danger" onClick={() => signOut()}>
-            Sign out
-          </button>
-        </li>
+        <>
+          <li className="nav-item">
+            <a className="nav-link active" href="/tasks">
+              Tasks
+            </a>
+          </li>
+          <li className="nav-item ml-2">
+            <button className="btn btn-danger" onClick={() => signOut()}>
+              Sign out
+            </button>
+          </li>
+        </>
       )}
       {!session && (
         <li className="nav-item pull-right">

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSession } from "next-auth/client";
+import { useSession, getSession } from "next-auth/client";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import AccessDenied from "../components/access-denied";
@@ -21,7 +21,7 @@ const TasksPage = ({
   TaskStatusToggle,
   tasks,
 }) => {
-  const [session] = useSession();
+  const [session, loading] = useSession();
 
   // Fetch tasks from server
   const { isSuccess, data } = useQuery(["fetchTasks", session], fetchTasks);
@@ -33,7 +33,7 @@ const TasksPage = ({
   }, [data]);
 
   // When rendering client side don't display anything until loading is complete
-  //if (typeof window !== "undefined" && loading) return null;
+  if (typeof window !== "undefined" && loading) return null;
 
   // If no session exists, display access denied message
   if (!session) {
@@ -54,17 +54,12 @@ const TasksPage = ({
   );
 };
 
-// export async function getServerSideProps(context) {
-//   const session = await getSession(context);
-//   // Fetch data from db with session.user.email
-//   await connectDB();
-//   const response = await TasksModel.findOne({
-//     email: session.user.email,
-//   }).exec();
-//   return {
-//     props: { storedTasks: response.tasks },
-//   };
-// }
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  return {
+    props: { session },
+  };
+}
 
 const mapStateToProps = (state) => {
   return { tasks: state.tasks };
