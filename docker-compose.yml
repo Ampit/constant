@@ -3,31 +3,22 @@ version: "3.7"
 services:
   constant:
     image: node:12-alpine
-    container_name: constant
-    restart: always
-    build: .
     command: sh -c "yarn install && yarn run dev"
     ports:
       - 3000:3000
     working_dir: /constant
     volumes:
       - ./:/constant
-      - /constant/node_modules
-      - /constant/.next
-      links:
-      - mongo
-  database:
-    container_name: mongo
+
+  mongodb:
     image: mongo
-    restart: always
     environment:
       - MONGO_INITDB_DATABASE=constant
       - MONGO_INITDB_ROOT_USERNAME=amar
       - MONGO_INITDB_ROOT_PASSWORD=pdnejoh
     volumes:
-      - ./config/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - todo-mongo-data:/data/db
     ports:
-      - "27019:27017"
+      - "27017:27017"
 volumes:
   todo-mongo-data:
