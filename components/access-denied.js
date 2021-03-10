@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/client";
+import Button from "react-bootstrap/Button";
 
 export default function AccessDenied() {
   return (
@@ -6,15 +7,17 @@ export default function AccessDenied() {
       Access Denied
       <br />
       You must
-      <button
-        className="btn btn-sm btn-primary m-2"
+      <Button
+        variant="primary"
+        size="sm"
+        className="m-2"
         onClick={(e) => {
           e.preventDefault();
           signIn();
         }}
       >
         Sign in
-      </button>
+      </Button>
       to view this page
     </div>
   );

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/client";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const AddTaskForm = ({ AddTaskAction }) => {
   const [newTask, setNewTask] = useState("");
@@ -21,25 +23,20 @@ const AddTaskForm = ({ AddTaskAction }) => {
   };
 
   return (
-    <form className="text-center my-3" acceptCharset="utf-8">
-      <div className="form-group">
-        <input
+    <Form className="text-center my-3">
+      <Form.Group controlId="addTaskText">
+        <Form.Label>Add New Task:</Form.Label>
+        <Form.Control
           type="text"
-          className="form-control"
-          id="newTaskInput"
-          placeholder="Add new task..."
+          placeholder="Enter New Task..."
           onChange={(e) => setNewTask(e.target.value)}
           value={newTask}
         />
-      </div>
-      <button
-        type="submit"
-        onClick={onSubmitHandler}
-        className="btn btn-primary"
-      >
-        Submit
-      </button>
-    </form>
+      </Form.Group>
+      <Button variant="primary" type="submit" onClick={onSubmitHandler}>
+        Add
+      </Button>
+    </Form>
   );
 };
 

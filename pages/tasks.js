@@ -3,7 +3,6 @@ import { useSession, getSession } from "next-auth/client";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import AccessDenied from "../components/access-denied";
-import LoggedIn from "../components/LoggedIn";
 import AddTaskForm from "../components/AddTaskForm";
 import TaskList from "../components/TaskList";
 import {
@@ -42,7 +41,6 @@ const TasksPage = ({
 
   return (
     <>
-      <LoggedIn />
       <AddTaskForm AddTaskAction={AddTask} />
       <TaskList
         tasks={tasks}
