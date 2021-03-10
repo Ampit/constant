@@ -4,8 +4,16 @@ import Svg from "../utils/Svg";
 
 const TaskList = ({ tasks, TaskStatusToggle, DeleteTask }) => {
   const [session] = useSession();
+  const totalTasks = tasks.length;
+  const tasksCompleted = tasks.filter((task) => task.complete != false).length;
+  const tasksLeft = tasks.filter((task) => task.complete != true).length;
   return (
-    <div className="my-5">
+    <div className="my-5 text-center">
+      <p>
+        Total Tasks: <strong>{totalTasks}</strong> | Tasks Completed:{" "}
+        <strong>{tasksCompleted}</strong> | Tasks Left:{" "}
+        <strong>{tasksLeft}</strong>
+      </p>
       <ListGroup id="listGroup">
         {tasks.map((task, i) => (
           <div key={i} className="row taskgroup text-center">
