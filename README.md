@@ -5,7 +5,7 @@ Work in progress...
 
 ## Features(Pending)
 
-1. Add daily recurring tasks
+1. Add daily recurring tasks or one time tasks
 2. Set a task as complete or still pending
 3. Get Reminders/notifications of remaining tasks for the day
 4. Profiles Page

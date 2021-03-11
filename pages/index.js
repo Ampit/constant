@@ -7,11 +7,10 @@ export default function Main() {
   const router = useRouter();
 
   useEffect(() => {
-    // If no session exists, display access denied message
-    if (session && !loading) {
-      // Redirect to tasks page
-      router.push("/tasks");
-    }
+    // if (session && !loading) {
+    //   // Redirect to tasks page
+    //   router.push("/tasks");
+    // }
   }, []);
 
   // When rendering client side don't display anything until loading is complete
