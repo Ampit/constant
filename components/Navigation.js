@@ -15,12 +15,9 @@ const Navigation = () => {
   });
 
   useEffect(() => {
-    setActivePage({
-      ...activePage,
-      pathname: "active",
-    });
-
-    console.log(`ActivePage = ${JSON.stringify(activePage)}`);
+    const updateActivePage = activePage;
+    updateActivePage[pathname] = "active";
+    setActivePage(updateActivePage);
   }, [pathname]);
 
   return (
@@ -30,13 +27,17 @@ const Navigation = () => {
           <Navbar>
             <Navbar.Brand href="/">Constant</Navbar.Brand>
             <Nav variant="pills" className="mr-auto">
-              <Nav.Link href="/">Dashboard</Nav.Link>
+              <Nav.Link className={activePage["/"]} href="/">
+                Dashboard
+              </Nav.Link>
               {session && (
                 <>
-                  <Nav.Link className="active" href="/tasks">
+                  <Nav.Link className={activePage["/tasks"]} href="/tasks">
                     Tasks
                   </Nav.Link>
-                  <Nav.Link href="/profile">Profile</Nav.Link>
+                  <Nav.Link className={activePage["/profile"]} href="/profile">
+                    Profile
+                  </Nav.Link>
                 </>
               )}
             </Nav>
