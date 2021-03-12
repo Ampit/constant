@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import { FetchTasks } from "../store/actions/tasks";
+import AccessDenied from "../components/access-denied";
 import { fetchTasks } from "../utils/tasks";
 import Button from "react-bootstrap/Button";
 
@@ -29,6 +30,11 @@ const Dashboard = ({ FetchTasks, tasks }) => {
 
   // When rendering client side don't display anything until loading is complete
   if (typeof window !== "undefined" && loading) return "Loading";
+
+  // If no session exists, display access denied message
+  if (!session) {
+    return <AccessDenied />;
+  }
 
   return (
     <div className="text-center">

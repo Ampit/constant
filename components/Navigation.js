@@ -1,10 +1,27 @@
 //import Link from "next/link";
 import { signOut, signIn } from "next-auth/client";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 import { Nav, Navbar, Button, Container, Row, Col } from "react-bootstrap";
 
 const Navigation = () => {
   const [session] = useSession();
+  const { pathname } = useRouter();
+  const [activePage, setActivePage] = useState({
+    "/": "",
+    "/tasks": "",
+    "/profile": "",
+  });
+
+  useEffect(() => {
+    setActivePage({
+      ...activePage,
+      pathname: "active",
+    });
+
+    console.log(`ActivePage = ${JSON.stringify(activePage)}`);
+  }, [pathname]);
 
   return (
     <Container>
@@ -16,7 +33,9 @@ const Navigation = () => {
               <Nav.Link href="/">Dashboard</Nav.Link>
               {session && (
                 <>
-                  <Nav.Link href="/tasks">Tasks</Nav.Link>
+                  <Nav.Link className="active" href="/tasks">
+                    Tasks
+                  </Nav.Link>
                   <Nav.Link href="/profile">Profile</Nav.Link>
                 </>
               )}
