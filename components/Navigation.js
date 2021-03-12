@@ -13,8 +13,13 @@ const Navigation = () => {
           <Navbar>
             <Navbar.Brand href="/">Constant</Navbar.Brand>
             <Nav variant="pills" className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              {session && <Nav.Link href="/tasks">Tasks</Nav.Link>}
+              <Nav.Link href="/">Dashboard</Nav.Link>
+              {session && (
+                <>
+                  <Nav.Link href="/tasks">Tasks</Nav.Link>
+                  <Nav.Link href="/profile">Profile</Nav.Link>
+                </>
+              )}
             </Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse
