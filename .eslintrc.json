@@ -1,18 +1,26 @@
 {
+    "parser": "@typescript-eslint/parser",
     "settings": {
         "react": {
             "version": "detect"
         }
     },
+    "globals": {
+        "React": "writable"
+    },
     "env": {
         "browser": true,
         "es2021": true,
         "node": true,
-        "jest/globals": true
+        "jest/globals": true,
+        "es6": true
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommend",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -23,12 +31,19 @@
     },
     "plugins": [
         "react",
-        "jest"
+        "jest",
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
         "react/display-name":"off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "prettier/prettier": "error",
+        "@typescript-eslint/interface-name-prefix": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
         "jest/no-disabled-tests": "warn",
         "jest/no-focused-tests": "error",
         "jest/no-identical-title": "error",

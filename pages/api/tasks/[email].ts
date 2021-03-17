@@ -2,7 +2,9 @@ import connectDB from "../../../config/connectDB";
 import Tasks from "../../../models/Tasks";
 import { getSession } from "next-auth/client";
 
-export default async (req, res) => {
+import { NextApiRequest, NextApiResponse } from "next";
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
   // Protect Route
   if (!session) {

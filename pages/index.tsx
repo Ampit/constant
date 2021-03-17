@@ -8,6 +8,8 @@ import AccessDenied from "../components/access-denied";
 import { fetchTasks } from "../utils/tasks";
 import Button from "react-bootstrap/Button";
 
+import { GetServerSideProps } from "next";
+
 const Dashboard = ({ FetchTasks, tasks }) => {
   const [session, loading] = useSession();
   const totalTasks = tasks.length;
@@ -50,7 +52,7 @@ const Dashboard = ({ FetchTasks, tasks }) => {
   );
 };
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async context =>  {
   const session = await getSession(context);
   return {
     props: { session },
