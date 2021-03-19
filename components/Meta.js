@@ -37,6 +37,9 @@ const Meta = ({ title, keywords, description }) => {
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
       ></link>
       <link rel="manifest" href="/manifest.webmanifest" />
+      {/* Ios support */}
+      <link rel="apple-touch-icon" href="/icon-192x192.png" />
+      <meta name="apple-mobile-web-app-status-bar" content="#4a90e2" />
       <script src="../js/snackbar.js" defer></script>
       <title>{title}</title>
     </Head>
