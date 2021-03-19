@@ -24,28 +24,31 @@ const Navigation = () => {
     <Container>
       <Row>
         <Col className="col-md-12">
-          <Navbar>
+          <Navbar collapseOnSelect expand="md">
             <Navbar.Brand href="/">Constant</Navbar.Brand>
-            <Nav variant="pills" className="mr-auto">
-              <Nav.Link className={activePage["/"]} href="/">
-                Dashboard
-              </Nav.Link>
-              {session && (
-                <>
-                  <Nav.Link className={activePage["/tasks"]} href="/tasks">
-                    Tasks
-                  </Nav.Link>
-                  <Nav.Link className={activePage["/profile"]} href="/profile">
-                    Profile
-                  </Nav.Link>
-                </>
-              )}
-            </Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse
-              className="justify-content-end"
+              className="justify-content-center"
               id="basic-navbar-nav"
             >
+              <Nav variant="pills" className="mr-auto">
+                <Nav.Link className={activePage["/"]} href="/">
+                  Dashboard
+                </Nav.Link>
+                {session && (
+                  <>
+                    <Nav.Link className={activePage["/tasks"]} href="/tasks">
+                      Tasks
+                    </Nav.Link>
+                    <Nav.Link
+                      className={activePage["/profile"]}
+                      href="/profile"
+                    >
+                      Profile
+                    </Nav.Link>
+                  </>
+                )}
+              </Nav>
               {session && (
                 <>
                   <Navbar.Text>Signed in as: {session.user.email}</Navbar.Text>

@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <Navigation />
       <Container>
         <Row>
-          <Col className="col-sm-6 mx-auto mb-5">
+          <Col className="col-md-8 mx-auto mb-5">
             <Header />
             {children}
           </Col>
