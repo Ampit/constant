@@ -12,7 +12,7 @@ const assets = [
   "/icon-256x256.png",
   "/icon-384x384.png",
   "/icon-512x512.png",
-  "/api/tasks/",
+  // "/api/tasks/",
   "/tasks",
 ];
 
@@ -28,9 +28,14 @@ self.addEventListener("install", (evt) => {
 
 // activate event
 self.addEventListener("activate", (evt) => {
-  console.log(`Service worker has been activated.`);
+  // console.log(`Service worker has been activated.`);
 });
 
 self.addEventListener("fetch", (evt) => {
-  console.log(`fetch event`, evt);
+  // console.log(`fetch event`, evt);
+  evt.respondWith(
+    caches.match(evt.request).then((cacheRes) => {
+      return cacheRes || fetch(evt.request);
+    })
+  );
 });
