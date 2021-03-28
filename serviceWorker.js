@@ -7,7 +7,6 @@ const assets = [
   "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css",
   "https://code.jquery.com/jquery-3.2.1.slim.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js",
-  "/js/snackbar.js",
   "/api/auth/session",
   "/manifest.webmanifest",
   "/icon-192x192.png",

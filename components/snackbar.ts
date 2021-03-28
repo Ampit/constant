@@ -1,6 +1,6 @@
-const snackbar = (message) => {
+const snackbar = (message: string) => {
   // Get the snackbar DIV
-  const x = document.getElementById("snackbar");
+  const x = document.getElementById("snackbar")!;
   // Add data to the snackbar div
   x.innerHTML = message;
   // Add the "show" class to DIV
@@ -11,3 +11,5 @@ const snackbar = (message) => {
     x.className = x.className.replace("show", "");
   }, 3000);
 };
+
+export default snackbar;

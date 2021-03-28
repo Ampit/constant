@@ -41,7 +41,6 @@ const Meta = ({ title, keywords, description }) => {
       <link rel="apple-touch-icon" href="/icon-192x192.png" />
       <meta name="apple-mobile-web-app-status-bar" content="#4a90e2" />
       <meta name="theme-color" content="#4a90e2" />
-      <script src="../js/snackbar.js" defer></script>
       <title>{title}</title>
     </Head>
   );

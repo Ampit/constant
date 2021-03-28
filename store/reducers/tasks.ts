@@ -1,10 +1,12 @@
 import * as actionTypes from "../actions/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 import { updateDb } from "../../utils/tasks";
+import { Tasks } from "../types";
+import snackbar from '../../components/snackbar'
 
-const initialState = [];
+const initialState: Tasks = [];
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actionTypes.ADD_TASK: {
       // Add new task to the list of tasks
@@ -61,3 +63,4 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
