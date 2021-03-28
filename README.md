@@ -3,13 +3,16 @@
 An App to stay consistent by completing recurring daily tasks and notify users of unfinished tasks for the day.
 Work in progress...
 
-## Features(Pending)
+## Features
 
-1. Add daily recurring tasks or one time tasks
-2. Set a task as complete or still pending
-3. Get Reminders/notifications of remaining tasks for the day
-4. Profiles Page
-5. Calender View
-6. Daily View
-7. Consistency Graphs
-8. Set Task Priorities
+1. Add daily recurring tasks (Pending)
+2. One time tasks
+3. Set a task as complete or still pending
+4. Get Reminders/notifications of remaining tasks for the day (Pending)
+5. Profiles Page (Pending)
+6. Calender View (Pending)
+7. Daily View (Pending)
+8. Consistency Graphs (Pending)
+9. Set Task Priorities (Pending)
+10. Upgrade UI (Pending)
+11. PWA
