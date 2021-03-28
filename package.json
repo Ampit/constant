@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "ts-node server.ts",
     "build": "next build",
-    "start": "node server.js",
+    "start": "ts-node server.ts",
     "lint": "eslint ./ --ext js,jsx,ts,tsx",
     "test": "jest"
   },
@@ -13,6 +13,7 @@
     "@babel/core": "^7.13.10",
     "@types/react-dom": "^17.0.2",
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "identity-obj-proxy": "^3.0.0",
     "install": "^0.13.0",
     "mongoose": "^5.11.18",
@@ -56,6 +57,7 @@
     "prettier": "^2.2.1",
     "source-map-loader": "^2.0.1",
     "ts-loader": "^8.0.18",
+    "ts-node": "^9.1.1",
     "typescript": "^4.2.3",
     "webpack": "^5.25.0"
   }

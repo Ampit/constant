@@ -62,8 +62,11 @@ self.addEventListener("fetch", (evt) => {
         cacheRes ||
         fetch(evt.request).then(async (fetchRes) => {
           const cache = await caches.open(dynamicCache);
-          cache.put(evt.request.url, fetchRes.clone());
-          limitCacheSize(dynamicCache, maxSize);
+          if (evt.request.url.indexOf("http") === 0) {
+            //skip request
+            cache.put(evt.request.url, fetchRes.clone());
+            limitCacheSize(dynamicCache, maxSize);
+          }
           return fetchRes;
         })
       );
