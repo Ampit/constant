@@ -8,20 +8,7 @@ import { FetchTasks } from "../store/actions/tasks";
 import AccessDenied from "../components/access-denied";
 import { fetchTasks } from "../utils/tasks";
 import Button from "react-bootstrap/Button";
-
-type Task = {
-  id: String,
-  taskName: String,
-  complete: Boolean,
-  createdAt: String,
-};
-
-type Tasks = [Task];
-
-
-interface State {
-  tasks: Tasks
-};
+import { Tasks, GlobalState } from "../store/types";
 
 
 type Props = {
@@ -81,7 +68,7 @@ export const getServerSideProps: GetServerSideProps = async context =>  {
   };
 }
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: GlobalState) => {
   return { tasks: state.tasks };
 };
 
