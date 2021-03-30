@@ -1,4 +1,5 @@
 import { useSession, getSession } from "next-auth/client";
+import { GetServerSideProps } from 'next'
 
 export default function LoggedIn() {
   const [session, loading] = useSession();
@@ -9,13 +10,13 @@ export default function LoggedIn() {
   return (
     <section className="text-center">
       <h4>Profile Page</h4>
-      <p>Signed in as {session.user.email}</p>
+      <p>Signed in as {session!.user.email}</p>
       <hr />
     </section>
   );
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   return {
     props: { session },

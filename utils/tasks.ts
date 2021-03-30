@@ -1,7 +1,9 @@
 /* eslint-disable no-undef */
 import axios from "axios";
+import { Session } from "next-auth/client";
+import { Tasks } from "../store/types";
 
-export const fetchTasks = async ({ queryKey }) => {
+export const fetchTasks = async ({ queryKey }: Session) => {
   const [_key, session] = queryKey;
   // User Logged In ?
   if (!session) {
@@ -11,25 +13,25 @@ export const fetchTasks = async ({ queryKey }) => {
   let config = {
     method: "get",
     url:
-      process.env.NEXT_PUBLIC_NEXTAUTH_URL +
-      process.env.NEXT_PUBLIC_TASKS_API_PATH +
+      process.env.NEXT_PUBLIC_NEXTAUTH_URL! +
+      process.env.NEXT_PUBLIC_TASKS_API_PATH! +
       session.user.email,
   };
   try {
-    const response = await axios(config);
+    const response = await axios(config as any);
     return response.data.tasks;
   } catch (error) {
     console.log(`Axios Fetch Error: ${error}`);
   }
 };
 
-export const updateDb = async (tasks, session) => {
+export const updateDb = async (tasks: Tasks, session: Session) => {
   // Update Db
   let config = {
     method: "post",
     url:
-      process.env.NEXT_PUBLIC_NEXTAUTH_URL +
-      process.env.NEXT_PUBLIC_TASKS_API_PATH +
+      process.env.NEXT_PUBLIC_NEXTAUTH_URL! +
+      process.env.NEXT_PUBLIC_TASKS_API_PATH! +
       session.user.email,
     data: {
       email: session.user.email,
@@ -38,7 +40,7 @@ export const updateDb = async (tasks, session) => {
   };
 
   try {
-    await axios(config);
+    await axios(config as any);
   } catch (error) {
     console.log(error);
   }

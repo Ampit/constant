@@ -1,8 +1,9 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript }from "next/document";
+import { NextPageContext } from 'next';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
+  static async getInitialProps(ctx: NextPageContext ) {
+    const initialProps = await Document.getInitialProps(ctx as any);
     return { ...initialProps };
   }
 
