@@ -3,12 +3,17 @@ import { useSession } from "next-auth/client";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import snackbar from "./snackbar";
+import { AddTask } from "../store/actions/tasks";
 
-const AddTaskForm = ({ AddTaskAction }) => {
+type Props = {
+  AddTaskAction: typeof AddTask;
+};
+
+const AddTaskForm = ({ AddTaskAction }: Props) => {
   const [newTask, setNewTask] = useState("");
   const [session] = useSession();
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!newTask) {
       snackbar("Please Fill in a task");

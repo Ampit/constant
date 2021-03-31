@@ -30,8 +30,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider session={pageProps.session}>
-        <Layout>
-          <Component {...pageProps} />
+        <Layout {...pageProps}>
+          <Component />
         </Layout>
       </Provider>
     </QueryClientProvider>

@@ -16,7 +16,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const updateActivePage = activePage;
-    updateActivePage[pathname] = "active";
+    updateActivePage[pathname as keyof typeof updateActivePage] = "active";
     setActivePage(updateActivePage);
   }, [pathname]);
 

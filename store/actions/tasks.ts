@@ -9,7 +9,7 @@ export const FetchTasks = (session: Session) => (dispatch: Dispatch) => {
     payload: session,
   });
 };
-export const AddTask = (newTask: Task, session: Session) => (
+export const AddTask = (newTask: string, session: Session) => (
   dispatch: Dispatch
 ) => {
   dispatch({ type: actionTypes.ADD_TASK, payload: newTask, session });
