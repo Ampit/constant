@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { v4 as uuidv4 } from "uuid";
 import { updateDb } from "../../utils/tasks";
 import { Tasks } from "../types";
-import snackbar from '../../components/snackbar'
+import snackbar from "../../components/snackbar";
 
 const initialState: Tasks = [];
 
@@ -63,4 +63,3 @@ const reducer = (state = initialState, action: any) => {
 };
 
 export default reducer;
-

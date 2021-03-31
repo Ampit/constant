@@ -1,7 +1,7 @@
 import { useSession, getSession, Session } from "next-auth/client";
 //import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { ActionCreatorsMapObject, bindActionCreators, Dispatch } from "redux";
+// import { ActionCreatorsMapObject, bindActionCreators, Dispatch } from "redux";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import { FetchTasks } from "../store/actions/tasks";
@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import { Tasks, GlobalState } from "../store/types";
 
 type Props = {
-  FetchTasks: (session: Session) => void;
+  FetchTasks: (session: Session) => void; // eslint-disable-line
   tasks: Tasks;
 };
 
@@ -78,4 +78,4 @@ const mapDispatchToProps = {
   FetchTasks,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard as any);

@@ -4,7 +4,7 @@ import { Session } from "next-auth/client";
 import { Tasks } from "../store/types";
 
 export const fetchTasks = async ({ queryKey }: Session) => {
-  const [_key, session] = queryKey;
+  const [, session] = queryKey;
   // User Logged In ?
   if (!session) {
     console.log("No Session returning");

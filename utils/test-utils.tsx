@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import type { AppProps /*, AppContext */ } from "next/app";
 import { Provider } from "next-auth/client";
 import Layout from "../components/Layout";
-import { wrapper } from "../store"; //Our function for store initialization //HOC wich helps us use Redux with Next.js
+// import { wrapper } from "../store"; //Our function for store initialization //HOC wich helps us use Redux with Next.js
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();

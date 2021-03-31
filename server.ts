@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config({ path: './.env.development.local'});
+dotenv.config({ path: "./.env.development.local" });
 
 import { createServer } from "http";
 // import { parse } from "url";
@@ -26,5 +26,5 @@ app.prepare().then(() => {
     }
   }).listen(PORT, () => {
     console.log(`> Ready on http://${HOST}:${PORT}`);
-  })
+  });
 });

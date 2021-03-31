@@ -1,3 +1,4 @@
 **/node_modules/*
 **/out/*
 **/.next/*
+config/init-mongo.js
