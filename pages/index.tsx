@@ -1,7 +1,7 @@
 import { useSession, getSession, Session } from "next-auth/client";
 //import { useRouter } from "next/router";
 import { useEffect } from "react";
-import {ActionCreatorsMapObject, bindActionCreators, Dispatch} from 'redux';
+import { ActionCreatorsMapObject, bindActionCreators, Dispatch } from "redux";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import { FetchTasks } from "../store/actions/tasks";
@@ -10,15 +10,14 @@ import { fetchTasks } from "../utils/tasks";
 import Button from "react-bootstrap/Button";
 import { Tasks, GlobalState } from "../store/types";
 
-
 type Props = {
   FetchTasks: (session: Session) => void;
-  tasks: Tasks
+  tasks: Tasks;
 };
 
 import { GetServerSideProps } from "next";
 
-const Dashboard = ({ FetchTasks, tasks } : Props) => {
+const Dashboard = ({ FetchTasks, tasks }: Props) => {
   const [session, loading] = useSession();
   const totalTasks = tasks.length;
   const tasksCompleted = tasks.filter((task) => task.complete != false).length;
@@ -26,7 +25,10 @@ const Dashboard = ({ FetchTasks, tasks } : Props) => {
   //const router = useRouter();
 
   // Fetch tasks from server
-  const { isSuccess, data } = useQuery(["fetchTasks", session], fetchTasks);
+  const { isSuccess, data } = useQuery(
+    ["fetchTasks", session],
+    fetchTasks as any
+  );
 
   useEffect(() => {
     // if (session && !loading) {
@@ -35,7 +37,7 @@ const Dashboard = ({ FetchTasks, tasks } : Props) => {
     // }
     if (isSuccess && data) {
       // Fire up an event to update client's state with server's tasks
-      FetchTasks(data);
+      FetchTasks(data as Session);
     }
   }, [data]);
 
@@ -61,12 +63,12 @@ const Dashboard = ({ FetchTasks, tasks } : Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async context =>  {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   return {
     props: { session },
   };
-}
+};
 
 const mapStateToProps = (state: GlobalState) => {
   return { tasks: state.tasks };
