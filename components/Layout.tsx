@@ -3,9 +3,13 @@ import Navigation from "./Navigation";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Container, Row, Col } from "react-bootstrap";
-import { AppProps } from "next/app";
+import React from "react";
 
-const Layout = ({ Component, pageProps }: AppProps) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: Props) => {
   return (
     <>
       <Meta />
@@ -14,7 +18,7 @@ const Layout = ({ Component, pageProps }: AppProps) => {
         <Row>
           <Col className="col-md-8 mx-auto mb-5">
             <Header />
-            <Component {...pageProps} />
+            {children}
           </Col>
         </Row>
       </Container>

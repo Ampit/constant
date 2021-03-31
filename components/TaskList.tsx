@@ -2,8 +2,16 @@ import { useSession } from "next-auth/client";
 import ListGroup from "react-bootstrap/ListGroup";
 import Svg from "../utils/Svg";
 import snackbar from "./snackbar";
+import { TaskStatusToggle, DeleteTask } from "../store/actions/tasks";
+import { Tasks } from "../store/types";
 
-const TaskList = ({ tasks, TaskStatusToggle, DeleteTask }) => {
+type Props = {
+  tasks: Tasks;
+  TaskStatusToggle: typeof TaskStatusToggle;
+  DeleteTask: typeof DeleteTask;
+};
+
+const TaskList = ({ tasks, TaskStatusToggle, DeleteTask }: Props) => {
   const [session] = useSession();
   const totalTasks = tasks.length;
   const tasksCompleted = tasks.filter((task) => task.complete != false).length;
@@ -19,7 +27,7 @@ const TaskList = ({ tasks, TaskStatusToggle, DeleteTask }) => {
         {tasks.map((task, i) => (
           <div key={i} className="row taskgroup text-center">
             <ListGroup.Item
-              onClick={() => TaskStatusToggle(task, session)}
+              onClick={() => TaskStatusToggle(task, session!)}
               action
               {...(task.complete ? { variant: "success" } : {})}
             >
@@ -29,7 +37,7 @@ const TaskList = ({ tasks, TaskStatusToggle, DeleteTask }) => {
               type="button"
               className="delete-btn btn btn-outline-danger"
               onClick={() => {
-                DeleteTask(task, session);
+                DeleteTask(task, session!);
                 snackbar(`${task.taskName} Deleted`);
               }}
             >
