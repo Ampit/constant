@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSession, getSession } from "next-auth/client";
+import { useSession, getSession, Session } from "next-auth/client";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import AccessDenied from "../components/access-denied";
@@ -12,6 +12,16 @@ import {
   TaskStatusToggle,
 } from "../store/actions/tasks";
 import { fetchTasks } from "../utils/tasks";
+import { GlobalState, Tasks } from "../store/types";
+import { GetServerSideProps } from "next";
+
+type Props = {
+  FetchTasks: typeof FetchTasks;
+  AddTask: typeof AddTask;
+  DeleteTask: typeof DeleteTask;
+  TaskStatusToggle: typeof TaskStatusToggle;
+  tasks: Tasks;
+};
 
 const TasksPage = ({
   FetchTasks,
@@ -19,15 +29,18 @@ const TasksPage = ({
   DeleteTask,
   TaskStatusToggle,
   tasks,
-}) => {
+}: Props) => {
   const [session, loading] = useSession();
 
   // Fetch tasks from server
-  const { isSuccess, data } = useQuery(["fetchTasks", session], fetchTasks);
+  const { isSuccess, data } = useQuery(
+    ["fetchTasks", session],
+    fetchTasks as any
+  );
 
   useEffect(() => {
     if (isSuccess && data) {
-      FetchTasks(data);
+      FetchTasks(data as Session);
     }
   }, [data]);
 
@@ -52,14 +65,14 @@ const TasksPage = ({
   );
 };
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   return {
     props: { session },
   };
-}
+};
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: GlobalState) => {
   return { tasks: state.tasks };
 };
 
@@ -70,4 +83,4 @@ const mapDispatchToProps = {
   TaskStatusToggle,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TasksPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TasksPage as any);
