@@ -5,14 +5,12 @@ const taskSchema = new Schema({
   email: {
     type: String,
     required: [true, "Email required"],
-    maxlength: [20, "Email cannot be more than 60 characters"],
+    maxlength: [20, "Email cannot be more than 20 characters"],
   },
   tasks: {
     type: Array,
   },
 });
-
-mongoose.models = {};
 
 const TasksModel = mongoose.model("Tasks", taskSchema);
 
