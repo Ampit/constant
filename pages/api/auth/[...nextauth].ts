@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 
@@ -10,12 +11,12 @@ const options = {
       // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
     }),
     Providers.Google({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_ID!,
+      clientSecret: process.env.GOOGLE_SECRET!,
     }),
     Providers.Facebook({
-      clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+      clientId: process.env.FACEBOOK_CLIENT_ID!,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),
     // ...add more providers here
   ],
@@ -24,4 +25,5 @@ const options = {
   database: process.env.DATABASE_URL,
 };
 
-export default (req, res) => NextAuth(req, res, options);
+export default (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, options);

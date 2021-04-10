@@ -9,13 +9,12 @@ import AccessDenied from "../components/access-denied";
 import { fetchTasks } from "../utils/tasks";
 import Button from "react-bootstrap/Button";
 import { Tasks, GlobalState } from "../store/types";
+import { GetServerSideProps } from "next";
 
 type Props = {
   FetchTasks: (session: Session) => void; // eslint-disable-line
   tasks: Tasks;
 };
-
-import { GetServerSideProps } from "next";
 
 const Dashboard = ({ FetchTasks, tasks }: Props) => {
   const [session, loading] = useSession();
