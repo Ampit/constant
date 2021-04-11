@@ -11,6 +11,7 @@ const Navigation = () => {
   const [activePage, setActivePage] = useState({
     "/": "",
     "/tasks": "",
+    "/recurringtasks": "",
     "/profile": "",
   });
 
@@ -39,6 +40,12 @@ const Navigation = () => {
                   <>
                     <Nav.Link className={activePage["/tasks"]} href="/tasks">
                       Tasks
+                    </Nav.Link>
+                    <Nav.Link
+                      className={activePage["/recurringtasks"]}
+                      href="/recurringtasks"
+                    >
+                      Recurring Tasks
                     </Nav.Link>
                     <Nav.Link
                       className={activePage["/profile"]}
