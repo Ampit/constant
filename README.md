@@ -12,7 +12,8 @@ Work in progress...
 5. Profiles Page (Pending)
 6. Calender View (Pending)
 7. Daily View (Pending)
-8. Consistency Graphs (Pending)
+8. Consistency Graphs/Charts (Pending)
 9. Set Task Priorities (Pending)
 10. Upgrade UI (Pending)
 11. PWA
+12. Avg Tasks Per Day(Pending)
