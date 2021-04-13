@@ -1,5 +1,5 @@
 import connectDB from "../../../config/connectDB";
-import Tasks from "../../../models/Tasks";
+import TasksModel from "../../../models/Tasks";
 import { getSession } from "next-auth/client";
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -25,7 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case "GET":
       try {
-        const response = await Tasks.findOne({ email });
+        const response = await TasksModel.findOne({ email });
         // show tasks if there are any
         response
           ? res.status(200).json(response)
@@ -38,8 +38,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     case "POST":
       try {
-        await Tasks.deleteOne({ email });
-        const tasks = await Tasks.create(req.body);
+        await TasksModel.deleteOne({ email });
+        const tasks = await TasksModel.create(req.body);
         // send response with tasks if updated correctly
         tasks
           ? res.status(201).json(tasks)

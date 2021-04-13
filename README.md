@@ -17,3 +17,4 @@ Work in progress...
 10. Upgrade UI (Pending)
 11. PWA
 12. Avg Tasks Per Day(Pending)
+13. Add Docs(Pending)
