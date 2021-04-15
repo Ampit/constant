@@ -1,14 +1,18 @@
-import { render, cleanup, waitFor, screen } from "@testing-library/react";
+import { render, cleanup, waitFor, screen, act } from "@testing-library/react";
+import { Session } from "next-auth";
 
 import AddTaskForm from "../components/AddTaskForm";
 
 afterEach(cleanup);
 
-describe("AddTaskForm tests", async () => {
+describe("AddTaskForm tests", () => {
+  const addTaskMock = jest.fn();
   test("Make sure there is an input", async () => {
-    render(<AddTaskForm AddTaskAction={jest.fn} />);
+    act(() => {
+      /* fire events that update state */
+      render(<AddTaskForm AddTaskAction={addTaskMock} />);
+    });
 
-    // getByText(new Date().getFullYear() + "  Constant");
-    expect(screen.getByText("Add New Task:")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Add New Task:")).toBeInTheDocument();
   });
 });
