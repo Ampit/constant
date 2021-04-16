@@ -41,7 +41,7 @@
         "prettier/prettier": [
             "error",
             {
-                "endOfLine": "off"
+                "endOfLine": "auto"
             }
         ],
         "@typescript-eslint/interface-name-prefix": "off",

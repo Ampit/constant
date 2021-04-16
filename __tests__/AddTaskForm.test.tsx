@@ -1,5 +1,4 @@
-import { render, cleanup, waitFor, screen, act } from "@testing-library/react";
-import { Session } from "next-auth";
+import { render, cleanup, screen, act } from "@testing-library/react";
 
 import AddTaskForm from "../components/AddTaskForm";
 
