@@ -9,6 +9,7 @@
     "lint": "eslint ./ --ext js,jsx,ts,tsx",
     "fix": "eslint ./ --ext js,jsx,ts,tsx --fix",
     "test": "jest",
+    "test:watch": "jest --watch",
     "check-types": "tsc"
   },
   "dependencies": {
