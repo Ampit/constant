@@ -1,26 +1,32 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, waitFor } from "@testing-library/react";
 
 import React from "react";
 import ReactDOM from "react-dom";
 import AddTaskForm from "../components/AddTaskForm";
 
 afterEach(cleanup);
+beforeEach(() => {
+  // @ts-expect-error:
+  fetch.resetMocks();
+});
+
 describe("AddTaskForm tests", () => {
-  test("Make sure the form component renders", async () => {
+  test("the form component renders", async () => {
     const div = document.createElement("div");
     const addTaskMock = jest.fn();
     ReactDOM.render(<AddTaskForm AddTaskAction={addTaskMock} />, div);
   });
 
-  it("make sure it accepts input", () => {
+  it("has an input", async () => {
+    // @ts-expect-error:
+    fetch.mockResponseOnce(
+      JSON.stringify({ user: { email: "ampit.xd@gmail.com" } })
+    );
     const addTaskMock = jest.fn();
-    try {
-      const { getByLabelText } = render(
-        <AddTaskForm AddTaskAction={addTaskMock} />
-      );
-      expect(getByLabelText("Add New Task:")).toBeInTheDocument();
-    } catch (error) {
-      console.log("Error", error);
-    }
+    const { getByLabelText } = render(
+      <AddTaskForm AddTaskAction={addTaskMock} />
+    );
+    const label = await waitFor(() => getByLabelText("Add New Task:"));
+    expect(label).toBeInTheDocument();
   });
 });
