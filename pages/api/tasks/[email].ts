@@ -29,13 +29,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         // show tasks if there are any
         response
           ? res.status(200).json(response)
-          : res.status(201).json({ message: "No tasks found" }); // no tasks found
+          : res.status(200).json({ message: "No tasks found" }); // no tasks found
       } catch (error) {
         console.log(error);
         res.status(400).json({ message: "Error occured." + error.message });
       }
       break;
 
+    // Improve the deletion and updation to one record at a time
     case "POST":
       try {
         await TasksModel.deleteOne({ email });

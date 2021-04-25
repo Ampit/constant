@@ -5,7 +5,7 @@ export default function LoggedIn() {
   const [session, loading] = useSession();
 
   // When rendering client side don't display anything until loading is complete
-  if (typeof window !== "undefined" && loading) return "Loading";
+  if (typeof window !== "undefined" && loading) return null;
 
   return (
     <section className="text-center">

@@ -41,7 +41,7 @@ const Dashboard = ({ FetchTasks, tasks }: Props) => {
   }, [data]);
 
   // When rendering client side don't display anything until loading is complete
-  if (typeof window !== "undefined" && loading) return "Loading";
+  if (typeof window !== "undefined" && loading) return null;
 
   // If no session exists, display access denied message
   if (!session) {
