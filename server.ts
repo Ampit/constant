@@ -5,7 +5,7 @@ import { createServer } from "http";
 // import { parse } from "url";
 import { createReadStream } from "fs";
 import next from "next";
-const PORT = process.env.NEXT_PUBLIC_PORT || 3000;
+const PORT = process.env.NEXT_PUBLIC_PORT || 5000;
 const HOST = process.env.NEXT_PUBLIC_HOST || "localhost";
 
 const dev = process.env.NODE_ENV !== "production";

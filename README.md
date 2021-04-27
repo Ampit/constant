@@ -1,4 +1,4 @@
-## About
+# Constant
 
 An App to stay consistent by completing recurring daily tasks and notify users of unfinished tasks for the day.
 Work in progress...
@@ -18,3 +18,23 @@ Work in progress...
 11. PWA
 12. Avg Tasks Per Day(Pending)
 13. Add Docs(Pending)
+
+## Scripts
+
+npm run dev - run app using ts node in development.
+
+npm run build - build the app for production
+
+npm start - run app using ts node in development.
+
+npm run lint - run linting checks.
+
+npm run fix - fix linting errors.
+
+npm run test - run all tests.
+
+npm run test:watch - run all tests in watch mode.
+
+npm run test:coverage - run all tests and generate coverage report.
+
+npm run check-types - run typescript compiler for type checking.
