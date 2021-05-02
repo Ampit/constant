@@ -60,7 +60,6 @@ const TasksPage = ({
         TaskStatusToggle={TaskStatusToggle}
         DeleteTask={DeleteTask}
       />
-      <div id="snackbar"></div>
     </>
   );
 };
