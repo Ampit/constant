@@ -1,7 +1,6 @@
 //import Link from "next/link";
-import { signOut, signIn } from "next-auth/client";
+import { signOut, signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { Nav, Navbar, Button, Container, Row, Col } from "react-bootstrap";
 

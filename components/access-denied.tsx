@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/client";
+import { signIn } from "next-auth/react";
 import Button from "react-bootstrap/Button";
 
 export default function AccessDenied() {

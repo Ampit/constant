@@ -1,4 +1,4 @@
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 import AccessDenied from "../components/access-denied";
 
 export default function Page({ content, session }) {

@@ -15,7 +15,7 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   createServer((req, res) => {
     // const parsedUrl = parse(req.url, true);
-    const parsedUrl = new URL(req.url!, process.env.NEXT_PUBLIC_NEXTAUTH_URL);
+    const parsedUrl = new URL(req.url!, process.env.NEXT_PUBLIC_NEXTAUTH_URL ?? `http://${HOST}:${PORT}`);
     const { pathname } = parsedUrl;
 
     if (pathname === "/sw.js") {

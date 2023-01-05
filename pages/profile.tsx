@@ -1,4 +1,4 @@
-import { useSession, getSession } from "next-auth/client";
+import { useSession, getSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
 
 export default function LoggedIn() {

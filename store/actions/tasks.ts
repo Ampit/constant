@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { Session } from "next-auth/client";
+import { Session } from "next-auth/react";
 import { Task } from "../types";
 import { Dispatch } from "redux";
 

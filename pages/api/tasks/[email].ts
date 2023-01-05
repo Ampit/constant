@@ -1,6 +1,6 @@
 import connectDB from "../../../config/connectDB";
 import TasksModel from "../../../models/Tasks";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 
 import { NextApiRequest, NextApiResponse } from "next";
 

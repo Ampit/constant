@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Svg from "../utils/Svg";
 import snackbar from "./snackbar";

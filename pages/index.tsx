@@ -1,4 +1,4 @@
-import { useSession, getSession, Session } from "next-auth/client";
+import { useSession, getSession, Session } from "next-auth/react";
 //import { useRouter } from "next/router";
 import { useEffect } from "react";
 // import { ActionCreatorsMapObject, bindActionCreators, Dispatch } from "redux";

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSession, getSession, Session } from "next-auth/client";
+import { useSession, getSession, Session } from "next-auth/react";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import AccessDenied from "../components/access-denied";

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import axios from "axios";
-import { Session } from "next-auth/client";
+import { Session } from "next-auth/react";
 import { Tasks } from "../store/types";
 
 export const fetchTasks = async ({ queryKey }: Session) => {
