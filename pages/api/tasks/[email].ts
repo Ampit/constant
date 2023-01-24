@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         response
           ? res.status(200).json(response)
           : res.status(200).json({ message: "No tasks found" }); // no tasks found
-      } catch (error) {
+      } catch (error: any) {
         console.log(error);
         res.status(400).json({ message: "Error occured." + error.message });
       }
@@ -48,7 +48,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             res
               .status(400)
               .json({ message: "Error Occured. Couldn't Update Tasks." });
-      } catch (error) {
+      } catch (error: any) {
         console.log(error);
         res.status(400).json({ message: "Error occured." + error.message });
       }

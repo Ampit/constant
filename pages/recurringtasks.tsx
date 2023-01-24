@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSession, getSession, Session } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import { useQuery } from "react-query";
 import { connect } from "react-redux";
 import AccessDenied from "../components/access-denied";
@@ -30,7 +30,7 @@ const TasksPage = ({
   TaskStatusToggle,
   tasks,
 }: Props) => {
-  const [session, loading] = useSession();
+  const { data: session, loading } = useSession();
 
   // Fetch tasks from server
   const { isSuccess, data } = useQuery(
@@ -40,7 +40,7 @@ const TasksPage = ({
 
   useEffect(() => {
     if (isSuccess && data) {
-      FetchTasks(data as Session);
+      FetchTasks(data);
     }
   }, [data]);
 

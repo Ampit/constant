@@ -10,12 +10,7 @@ const connectDB = async () => {
   console.log("Db Connected");
   // Use new db connection
   try {
-    return await mongoose.connect(process.env.DATABASE_URL!, {
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-      useNewUrlParser: true,
-    });
+    return await mongoose.connect(process.env.DATABASE_URL!);
   } catch (error) {
     return Error(`Couldn't Connect: ${error}`);
   }

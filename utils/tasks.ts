@@ -1,10 +1,9 @@
 /* eslint-disable no-undef */
 import axios from "axios";
-import { Session } from "next-auth/react";
+import { Session } from "next-auth";
 import { Tasks } from "../store/types";
 
-export const fetchTasks = async ({ queryKey }: Session) => {
-  const [, session] = queryKey;
+export const fetchTasks = async (session: Session) => {
   // User Logged In ?
   if (!session) {
     console.log("No Session returning");
@@ -15,7 +14,7 @@ export const fetchTasks = async ({ queryKey }: Session) => {
     url:
       process.env.NEXT_PUBLIC_NEXTAUTH_URL! +
       process.env.NEXT_PUBLIC_TASKS_API_PATH! +
-      session.user.email,
+      session.user?.email,
   };
   try {
     const response = await axios(config as any);
@@ -32,9 +31,9 @@ export const updateDb = async (tasks: Tasks, session: Session) => {
     url:
       process.env.NEXT_PUBLIC_NEXTAUTH_URL! +
       process.env.NEXT_PUBLIC_TASKS_API_PATH! +
-      session.user.email,
+      session.user?.email,
     data: {
-      email: session.user.email,
+      email: session.user?.email,
       tasks: tasks,
     },
   };

@@ -1,4 +1,4 @@
-import { useSession, getSession, Session } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 //import { useRouter } from "next/router";
 import { useEffect } from "react";
 // import { ActionCreatorsMapObject, bindActionCreators, Dispatch } from "redux";
@@ -10,6 +10,7 @@ import { fetchTasks } from "../utils/tasks";
 import Button from "react-bootstrap/Button";
 import { Tasks, GlobalState } from "../store/types";
 import { GetServerSideProps } from "next";
+import { Session } from "next-auth";
 
 type Props = {
   FetchTasks: (session: Session) => void; // eslint-disable-line
@@ -17,7 +18,7 @@ type Props = {
 };
 
 const Dashboard = ({ FetchTasks, tasks }: Props) => {
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession();
   const totalTasks = tasks.length;
   const tasksCompleted = tasks.filter((task) => task.complete != false).length;
   const tasksLeft = tasks.filter((task) => task.complete != true).length;
@@ -36,12 +37,12 @@ const Dashboard = ({ FetchTasks, tasks }: Props) => {
     // }
     if (isSuccess && data) {
       // Fire up an event to update client's state with server's tasks
-      FetchTasks(data as Session);
+      FetchTasks(data);
     }
   }, [data]);
 
   // When rendering client side don't display anything until loading is complete
-  if (typeof window !== "undefined" && loading) return null;
+  if (typeof window !== "undefined" && status === "loading") return null;
 
   // If no session exists, display access denied message
   if (!session) {

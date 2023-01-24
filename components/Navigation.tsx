@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Nav, Navbar, Button, Container, Row, Col } from "react-bootstrap";
 
 const Navigation = () => {
-  const [session] = useSession();
+  const { data: session } = useSession();
   const { pathname } = useRouter();
   const [activePage, setActivePage] = useState({
     "/": "",
@@ -57,7 +57,7 @@ const Navigation = () => {
               </Nav>
               {session && (
                 <>
-                  <Navbar.Text>Signed in as: {session.user.email}</Navbar.Text>
+                  <Navbar.Text>Signed in as: {session.user?.email}</Navbar.Text>
                   <Button
                     variant="danger"
                     className="ml-2"

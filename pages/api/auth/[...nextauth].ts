@@ -1,20 +1,22 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import EmailProvider from "next-auth/providers/email";
+import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
 
 const options = {
   // Configure one or more authentication providers
   providers: [
-    Providers.Email({
+    EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
       // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
     }),
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_ID!,
       clientSecret: process.env.GOOGLE_SECRET!,
     }),
-    Providers.Facebook({
+    FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),

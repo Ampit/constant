@@ -11,7 +11,7 @@ type Props = {
 
 const AddTaskForm = ({ AddTaskAction }: Props) => {
   const [newTask, setNewTask] = useState("");
-  const [session] = useSession();
+  const { data: session } = useSession();
 
   const onSubmitHandler = (e: React.MouseEvent) => {
     e.preventDefault();
