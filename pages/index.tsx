@@ -37,7 +37,7 @@ const Dashboard = ({ FetchTasks, tasks }: Props) => {
     // }
     if (isSuccess && data) {
       // Fire up an event to update client's state with server's tasks
-      FetchTasks(data);
+      FetchTasks(data as Session);
     }
   }, [data]);
 
