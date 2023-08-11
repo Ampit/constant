@@ -1,7 +1,6 @@
 # Constant
 
 An App to stay consistent by completing recurring daily tasks and notify users of unfinished tasks for the day.
-Work in progress...
 
 
 ## Features
